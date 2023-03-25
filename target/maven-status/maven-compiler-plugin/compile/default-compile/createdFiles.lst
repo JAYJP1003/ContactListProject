@@ -1,0 +1,7 @@
+com/contacts/MyContactList/entity/PersonList.class
+com/contacts/MyContactList/MyContactListApplication.class
+com/contacts/MyContactList/service/PersonNameServiceImpl.class
+com/contacts/MyContactList/dao/ContactDao.class
+com/contacts/MyContactList/service/PersonNameService.class
+com/contacts/MyContactList/controller/MyController.class
+com/contacts/MyContactList/entity/ContactDetails.class
