@@ -1,6 +1,8 @@
 package com.contacts.MyContactList.controller;
 
+import com.contacts.MyContactList.entity.ContactDetails;
 import com.contacts.MyContactList.entity.PersonList;
+import com.contacts.MyContactList.service.ContactDetailsService;
 import com.contacts.MyContactList.service.PersonNameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,8 @@ public class MyController {
 //    }
     @Autowired
     PersonNameService personNameService;
+    @Autowired
+    ContactDetailsService contactDetailsService;
 
     @GetMapping("/home")
     public String home() {
@@ -47,12 +51,27 @@ public class MyController {
         return this.personNameService.addPersonName(personList);
     }
 
-    @PutMapping("/person")
-    public PersonList updatePerson(@RequestBody PersonList personList) {
-        return this.personNameService.updatePersonName(personList);
+    @PutMapping("/person/{personId}")
+    public PersonList updatePerson(@RequestBody PersonList personList, @PathVariable int personId) {
+        return this.personNameService.updatePersonName(personList, personId);
+    }
+    @DeleteMapping("/person/{personId}")
+    public String deletePerson(@PathVariable int personId){
+        this.personNameService.deletePersonName(personId);
+        return "d0ne";
     }
 
-    // Write code for Update a person from person List, and deleting a person from personList.
+
+
+    // getting all contacts
+    @GetMapping("/contacts")
+    public List<ContactDetails> getAllContacts(){
+        return contactDetailsService.getAllContacts();
+    }
+
+
+
+
 
 
 }

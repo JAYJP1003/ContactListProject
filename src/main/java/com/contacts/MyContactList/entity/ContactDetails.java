@@ -1,10 +1,24 @@
 package com.contacts.MyContactList.entity;
 
-public class ContactDetails {
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "contactdetails")
+public class ContactDetails implements Serializable {
+
+    @Id
+    @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Id
+    @Column(name = "person_id")
+
     private int personId;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private PersonList personList;
 
     public ContactDetails(){};
 

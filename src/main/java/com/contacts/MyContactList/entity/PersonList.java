@@ -1,6 +1,7 @@
 package com.contacts.MyContactList.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "contactlist")
@@ -12,6 +13,9 @@ public class PersonList {
     private Integer personId;
     @Column(name = "person_name")
     private String personName;
+
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
+    private List<ContactDetails> contactDetails;
 
     public PersonList() {
         super();

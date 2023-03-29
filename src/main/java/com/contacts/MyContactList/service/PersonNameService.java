@@ -11,5 +11,7 @@ public interface PersonNameService {
 
     public PersonList addPersonName(PersonList personList);
 
-    public PersonList updatePersonName(PersonList personList);
+    public PersonList updatePersonName(PersonList personList, int pId);
+
+    public void deletePersonName(int parseInt);
 }

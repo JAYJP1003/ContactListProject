@@ -5,20 +5,18 @@ import com.contacts.MyContactList.entity.PersonList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PersonNameServiceImpl implements PersonNameService {
 
-    //    List<PersonName> list = new ArrayList<>();
+        List<PersonList> list = new ArrayList<>();
+
     @Autowired
     private ContactDao contactDao;
 
-    public PersonNameServiceImpl() {
-//         list.add(new PersonName(1, "Jay"));
-//         list.add(new PersonName(2, "Vaibhav"));
-//         list.add(new PersonName(3, "Poonam"));
-    }
+    public PersonNameServiceImpl() {}
 
     @Override
     public List<PersonList> getPersonList() {
@@ -30,36 +28,43 @@ public class PersonNameServiceImpl implements PersonNameService {
     @Override
     public PersonList getPersonName(int personId) {
 
-//         PersonName person = null;
-//         for(PersonName p: list)
+//         list = contactDao.findAll();
+//         for(PersonList p: list)
 //         {
 //             if(p.getPersonId()== personId){
 //                 person = p;
 //             }
 //         }
-//        return contactDao.getOne(personId);
-        return  null;
+        return contactDao.findById(personId).get();
+
     }
 
     @Override
     public PersonList addPersonName(PersonList personList) {
 //         list.add(personName);
-        return  null;    }
+         contactDao.save(personList);
+         return personList;
+    }
 
     @Override
-    public PersonList updatePersonName(PersonList p) {
+    public PersonList updatePersonName(PersonList p, int pId) {
 
-//       for (PersonName p1 : list){
-//            if(p1.getPersonId() == p.getPersonId()){
-//                p1.setPersonName(p.getPersonName());
-//            }
-//        }
-//        contactDao.save(p);
+        list = getPersonList();
+       for (PersonList p1 : list){
+            if(p1.getPersonId() == pId){
+                p1.setPersonId(pId);
+                p1.setPersonName(p.getPersonName());
+                contactDao.save(p1);
+                break;
+            }
+        }
+
         return p;
     }
 
     public void deletePersonName(int parseInt) {
 //        PersonList entity = contactDao.getOne(parseInt);
-//        contactDao.delete(entity);
+        contactDao.deleteById(parseInt);
+
     }
 }
