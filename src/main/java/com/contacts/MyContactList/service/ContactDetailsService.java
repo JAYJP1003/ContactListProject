@@ -7,4 +7,8 @@ import java.util.List;
 public interface ContactDetailsService {
 
     public List<ContactDetails> getAllContacts();
+
+    List<ContactDetails> getContactsOfPerson(int personId);
+
+//    List <ContactDetails> getBasicPersonalDetails();
 }

@@ -67,4 +67,10 @@ public class PersonNameServiceImpl implements PersonNameService {
         contactDao.deleteById(parseInt);
 
     }
+
+    @Override
+    public List<PersonList> getFullPersonalDetails() {
+        return contactDao.getFullPersonalDetails();
+    }
+
 }

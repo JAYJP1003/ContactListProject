@@ -10,11 +10,11 @@ public class PersonList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "person_id")
-    private Integer personId;
+    private int personId;
     @Column(name = "person_name")
     private String personName;
 
-    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personList", cascade = CascadeType.ALL)
     private List<ContactDetails> contactDetails;
 
     public PersonList() {
@@ -26,11 +26,19 @@ public class PersonList {
         this.personName = personName;
     }
 
-    public Integer getPersonId() {
+    public List<ContactDetails> getContactDetails() {
+        return contactDetails;
+    }
+
+    public void setContactDetails(List<ContactDetails> contactDetails) {
+        this.contactDetails = contactDetails;
+    }
+
+    public int getPersonId() {
         return personId;
     }
 
-    public void setPersonId(Integer personId) {
+    public void setPersonId(int personId) {
         this.personId = personId;
     }
 

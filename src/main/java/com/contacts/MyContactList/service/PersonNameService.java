@@ -14,4 +14,6 @@ public interface PersonNameService {
     public PersonList updatePersonName(PersonList personList, int pId);
 
     public void deletePersonName(int parseInt);
+
+    public List<PersonList> getFullPersonalDetails();
 }
